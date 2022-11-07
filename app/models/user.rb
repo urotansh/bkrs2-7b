@@ -10,7 +10,7 @@ class User < ApplicationRecord
   
   has_many :today_books, ->     {where(created_at: (Time.current.beginning_of_day)...(Time.current.beginning_of_day + 1.day))}, class_name: 'Book'
   has_many :yesterday_books, -> {where(created_at: (Time.current.beginning_of_day - 1.day)...(Time.current.beginning_of_day))}, class_name: 'Book'
-  has_many :this_week_books, -> {where(created_at: (Time.current.beginning_of_day - 6.day)...(Time.current.beginning_of_day))}, class_name: 'Book'
+  has_many :this_week_books, -> {where(created_at: (Time.current.beginning_of_day - 6.day)...(Time.current.beginning_of_day + 1.day))}, class_name: 'Book'
   has_many :last_week_books, -> {where(created_at: (Time.current.beginning_of_day - 13.day)...(Time.current.beginning_of_day - 6.day))}, class_name: 'Book'
   
   # userとrelationshipsが1:Nの関係
